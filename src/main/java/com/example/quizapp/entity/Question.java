@@ -1,6 +1,7 @@
 package com.example.quizapp.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -25,7 +26,8 @@ public class Question {
     private String difficultyLevel;
     private String category;
 
-    @ManyToMany(mappedBy = "questions")  // This is the inverse side
+    @ManyToMany(mappedBy = "questions")
+    @JsonBackReference
     private Set<Quiz> quizzes = new HashSet<>();
 
 }
